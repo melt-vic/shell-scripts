@@ -11,11 +11,11 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 enviar_alerta() {
 	local mensaje="$HOSTNAME tiene la siguiente alerta de disco: $1"
 
-   # Enviar notificación a Telegram
-   curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
-	   -d "chat_id=$CHAT_ID" \
-	   --data-urlencode "text=$mensaje" > /dev/null
-   }
+    # Enviar notificación a Telegram
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+    	-d "chat_id=$CHAT_ID" \
+        --data-urlencode "text=$mensaje" > /dev/null
+}
 
 # sd[a-z]: Linux no mantiene fijo el fichero del disco sino que se lo asigna en función del orden de "llegada" (orden en que "despiertan" los discos)
 for disco in /dev/sd[a-z]; do
